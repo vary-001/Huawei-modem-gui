@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: "Outfit", sans-serif;
+}
+
+/* smooth UI */
+* {
+  transition: all 0.15s ease-in-out;
+}
+
+/* better scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+.icon-hover {
+  transition: 0.2s ease;
+}
+.icon-hover:hover {
+  color: #d97706;
+  transform: translateY(-1px);
+}

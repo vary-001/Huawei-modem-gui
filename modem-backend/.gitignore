@@ -1,0 +1,48 @@
+# Node dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Nodemon
+nodemon.json
+
+# Build output
+dist/
+
+# Editor directories and files
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache
+.npm
+
+# Ignore local test and debug files
+coverage/
+
+# System files
+*.swp
+*~
+
+# Serial port device paths should not be committed
+# (Allow developers to set SERIAL_PORT_PATH locally via .env)
+

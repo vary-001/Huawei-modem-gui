@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modem Test</title>
+</head>
+<body>
+  <h1>Modem Live Updates</h1>
+  <pre id="log"></pre>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script>
+    const socket = io("http://localhost:3001");
+
+    const log = document.getElementById("log");
+
+    socket.on("server-message", (data) => {
+      log.innerText += "\n" + data;
+    });
+
+    socket.on("modem-status", (data) => {
+      log.innerText = "\n📡 MODEM UPDATE:\n" + data;
+    });
+
+    socket.on("sms-sent", (data) => {
+      log.innerText += "\n📩 SMS SENT: " + JSON.stringify(data);
+    });
+
+    socket.on("ussd-response", (data) => {
+      log.innerText += "\n💳 USSD: " + data;
+    });
+  </script>
+</body>
+</html>
