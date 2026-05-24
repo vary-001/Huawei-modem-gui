@@ -78,7 +78,7 @@ export default function Settings() {
 
             {/* GITHUB */}
             <a
-              href="https://github.com/vary_001"
+              href="https://github.com/vary-001"
               target="_blank"
               className="
                 flex items-center gap-2
@@ -90,7 +90,7 @@ export default function Settings() {
               "
             >
               <Code2 size={18} />
-              GitHub: vary_001
+              GitHub: vary-001
               <ExternalLink size={14} className="opacity-60" />
             </a>
 
