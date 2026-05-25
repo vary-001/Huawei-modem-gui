@@ -8,9 +8,11 @@ const { Server } = require("socket.io");
 const smsRoutes = require("./routes/sms.routes");
 const ussdRoutes = require("./routes/ussd.routes");
 const contactsRoutes = require("./routes/contacts.routes");
+const callRoutes = require("./routes/call.routes");
 
 const internetService = require("./services/internet.service");
 const smsService = require("./services/sms.service");
+const callService = require("./services/call.service");
 
 const app = express();
 
@@ -41,6 +43,7 @@ app.set("io", io);
 app.use("/api/sms", smsRoutes);
 app.use("/api/ussd", ussdRoutes);
 app.use("/api/contacts", contactsRoutes);
+app.use("/api/call", callRoutes);
 
 // -----------------------------
 // 🔥 SAFE STARTUP SEQUENCE
@@ -58,6 +61,9 @@ const startServices = async () => {
 
       console.log("🌐 Starting modem monitoring...");
       internetService.watchModem(io);
+
+      console.log("📞 Starting call watch service...");
+      callService.watchCalls(io);
 
     }, 3000); // IMPORTANT delay
 

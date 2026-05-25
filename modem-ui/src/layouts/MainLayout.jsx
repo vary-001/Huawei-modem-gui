@@ -7,6 +7,7 @@ import {
   Settings,
   Home,
   Phone,
+  PhoneCall,
   Menu,
   X,
 } from "lucide-react";
@@ -15,6 +16,7 @@ const navItems = [
   { name: "Dashboard", path: "/", icon: Home },
   { name: "SMS", path: "/sms", icon: MessageSquare },
   { name: "Contacts", path: "/contacts", icon: Phone },
+  { name: "Calls", path: "/call", icon: PhoneCall },
   { name: "USSD", path: "/ussd", icon: Terminal },
   { name: "Internet", path: "/internet", icon: Wifi },
   { name: "Settings", path: "/settings", icon: Settings },

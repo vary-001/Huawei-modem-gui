@@ -19,6 +19,15 @@ async function getModemIndex() {
   const output = await runCommand("mmcli -L");
   const match = output.match(/Modem\/(\d+)/);
   if (!match) {
+    try {
+      const jsonOut = await runCommand("mmcli -L -J");
+      const j = JSON.parse(jsonOut || "{}");
+      const jsonStr = JSON.stringify(j);
+      const m2 = jsonStr.match(/Modem\/(\d+)/);
+      if (m2) return m2[1];
+    } catch (e) {
+      // ignore
+    }
     throw new Error("No modem found in mmcli -L output");
   }
   return match[1];
@@ -137,12 +146,24 @@ exports.listSMS = async () => {
 
 // 📡 REAL-TIME SMS BROADCAST (Socket.IO)
 exports.broadcastSMSList = async (io) => {
+  let lastNoModemLog = 0;
   setInterval(async () => {
     try {
       const messages = await exports.listSMS();
       io.emit("sms-inbox", messages);
+      lastNoModemLog = 0;
     } catch (err) {
-      console.error("SMS broadcast error:", err?.message || err);
+      const msg = err?.message || String(err);
+      if (String(msg).toLowerCase().includes("no modem found")) {
+        const now = Date.now();
+        if (now - lastNoModemLog > 30000) {
+          console.error("SMS broadcast error:", msg);
+          io.emit("sms-inbox", []);
+          lastNoModemLog = now;
+        }
+      } else {
+        console.error("SMS broadcast error:", msg);
+      }
     }
   }, 5000); // refresh every 5 seconds
 };

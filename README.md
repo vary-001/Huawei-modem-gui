@@ -1,6 +1,6 @@
 # VARY'S MODEM MANAGER
 
-A full-stack modem management project for sending SMS, reading contacts, handling USSD, and monitoring internet connectivity via a serial-connected modem.
+A full-stack modem management project for sending SMS, reading contacts, handling USSD, managing voice calls, and monitoring internet connectivity through a serial-connected modem.
 
 ## Project Summary
 
@@ -16,6 +16,7 @@ This project is intended as a complete modem dashboard and control interface, wi
 - Send and receive SMS
 - Read/manage phonebook contacts from SIM or device storage
 - Run USSD commands
+- Place and receive voice calls with modem dialer controls
 - Monitor internet/modem connectivity status
 - WebSocket integration for live updates
 
@@ -103,6 +104,3 @@ If you want to contribute:
 - Node Express serial port
 
 ---
-
-
-# Huawei-modem-gui

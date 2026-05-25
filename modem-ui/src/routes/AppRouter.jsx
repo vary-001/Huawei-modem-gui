@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import SMS from "../pages/SMS";
 import SMSCompose from "../pages/SMSCompose";
 import Contacts from "../pages/Contacts";
+import Call from "../pages/Call";
 import USSD from "../pages/USSD";
 import Internet from "../pages/Internet";
 import Settings from "../pages/Settings";
@@ -21,6 +22,7 @@ export default function AppRouter() {
           <Route path="/sms" element={<SMS />} />
           <Route path="/sms/send" element={<SMSCompose />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/call" element={<Call />} />
 
           <Route path="/ussd" element={<USSD />} />
           <Route path="/internet" element={<Internet />} />
