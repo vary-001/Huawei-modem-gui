@@ -3,6 +3,8 @@ const router = express.Router();
 const controller = require("../controllers/call.controller");
 
 router.get("/status", controller.status);
+router.get("/list", controller.list);
+router.get("/info", controller.info);
 router.post("/dial", controller.dial);
 router.post("/answer", controller.answer);
 router.post("/hangup", controller.hangup);
